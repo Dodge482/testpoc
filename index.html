@@ -2,18 +2,31 @@
 <html>
 <head>
   <title>Open Redirect PoC</title>
+  <style>
+    /* تنسيق لضمان أن جسم الصفحة يأخذ كامل الشاشة وإزالة الحواف */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden; /* يمنع ظهور شريط التمرير */
+    }
+
+    /* تنسيق الصورة لتملأ الصفحة بالكامل */
+    .full-page-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* يضمن ملء المساحة بدون تشويه (قد يقص الأطراف) */
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>Open Redirect PoC</h1>
-  <p id="output"></p>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    let outputText = "";
-    params.forEach((value, key) => {
-      outputText += `${key}: ${value} <br>`;
-    });
-    document.getElementById("output").innerHTML = outputText || "No parameters found.";
-  </script>
+  <!-- 👇 ارفع ملف الصورة إلى جيت هاب واكتب اسمه هنا 👇 -->
+  <img src="my_poc_image.jpg" alt="PoC Full Page Image" class="full-page-image">
+
 </body>
 </html>
